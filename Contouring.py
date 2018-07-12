@@ -1,0 +1,10 @@
+import cv2
+img=cv2.imread('foot.png')
+gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+_,thresh=cv2.threshold(gray,140,255,cv2.THRESH_BINARY_INV)
+thresh=cv2.GaussianBlur(thresh,(5,5),0)
+_, contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+cv2.drawContours(img,contours,-1,(0,255,0),2)
+cv2.imshow('img',img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()

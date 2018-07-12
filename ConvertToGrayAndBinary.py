@@ -1,0 +1,10 @@
+import cv2
+image = cv2.imread("clouds.jpg")
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+cv2.imshow("Over the Clouds", image)
+cv2.imshow("Over the Clouds - gray", gray_image)
+(thresh, im_bw) = cv2.threshold(gray_image, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+cv2.imwrite('bw_image.png', im_bw)
+cv2.imshow("Over the Clouds - Binary", im_bw)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
